@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	template="/template/default.xhtml"
+	xmlns:message="http://java.sun.com/jsf/composite/message">
+	<ui:define name="content">
+		<h:form>
+			<div class="col-md-10">
+				<ol class="breadcrumb">
+					<li><a href="#">#{sessaoUsuario.turmaSelecionada.curso.descricao}</a></li>
+					<li><a href="#">#{sessaoUsuario.turmaSelecionada.nome}</a></li>
+					<li class="active">#{exercicioAulaController.questionarioSelecionado.nome}</li>
+				</ol>
+				
+				<div class="content">                    
+                    <message:message/>
+                </div>
+
+				<div class="block">
+					<div class="header">
+						<h2>#{exercicioAulaController.questionarioSelecionado.nome}</h2>
+					</div>
+
+					<div class="content">
+						<table cellpadding="0" cellspacing="0" width="100%" class="table table-bordered table-striped sortable_simple">
+						
+                            <tbody>
+                            	<ui:repeat var="questaoDecorator" value="#{exercicioAulaController.obtemListaQuestoes()}">
+									<tr>
+										<td><h:outputText value="#{questaoDecorator.numeroQuestao} - #{questaoDecorator.questao.enunciado}" /></td>
+									</tr>
+									<tr>
+										<td>
+											<h:selectOneRadio 
+												label="#{msg['label.questao']} #{questaoDecorator.numeroQuestao}"
+												required="true"
+												style="width: 100%;"  
+												value="#{questaoDecorator.respostaQuestao}"
+												rendered="#{questaoDecorator.questao.tipoQuestao == 'ALTERNATIVA_CORRETA'}"
+												layout="pageDirection"
+												converter="entityConverter">
+												<f:selectItems
+													value="#{questaoDecorator.questao.listaItens}" var="item"
+													itemLabel="#{item.enunciado}" itemValue="#{item}" />
+											</h:selectOneRadio> 
+											
+											<h:selectManyCheckbox
+												label="#{msg['label.questao']} #{questaoDecorator.numeroQuestao}"
+												required="true"
+												style="width: 100%;"
+												value="#{questaoDecorator.respostasQuestoesArray}"
+												rendered="#{questaoDecorator.questao.tipoQuestao == 'MULTIPLA_ESCOLHA'}"
+												layout="pageDirection"
+												converter="entityConverter">
+												<f:selectItems
+													value="#{questaoDecorator.questao.listaItens}" var="item"
+													itemLabel="#{item.enunciado}" itemValue="#{item}" />
+											</h:selectManyCheckbox>
+											
+											<h:inputText value="#{questaoDecorator.respostaDescritiva}" 
+												label="#{msg['label.questao']} #{questaoDecorator.numeroQuestao}"
+												rendered="#{questaoDecorator.questao.tipoQuestao == 'DESCRITIVA'}" />
+										</td>
+									</tr>
+								</ui:repeat>                               
+                            </tbody>
+                        </table>
+
+					</div>
+				</div>
+				<div class="footer tar">
+					<button jsf:action="salvar" class="btn btn-default btn-clean">#{msg['label.salvar']}</button><p/>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

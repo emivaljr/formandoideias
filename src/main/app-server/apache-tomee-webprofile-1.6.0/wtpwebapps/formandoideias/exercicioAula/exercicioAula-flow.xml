@@ -1,0 +1,19 @@
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+      http://xmlns.jcp.org/xml/ns/javaee
+      http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+<flow-definition id="exercicioAula">
+<initializer>#{exercicioAulaController.init()}</initializer>
+<flow-call id="obtemQuestionario">
+    <flow-reference>
+    <flow-id>obtemQuestionario</flow-id>
+    </flow-reference>
+</flow-call>
+<method-call id="salvar" >
+<method>#{exercicioAulaController.salvar}</method>
+<default-outcome>sucesso</default-outcome>
+</method-call>
+</flow-definition>
+</faces-config>

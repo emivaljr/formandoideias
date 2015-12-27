@@ -1,0 +1,46 @@
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+      http://xmlns.jcp.org/xml/ns/javaee
+      http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+<flow-definition id="forum">
+<initializer>#{forumController.init()}</initializer>
+<flow-call id="novoTopico">
+    <flow-reference>
+    <flow-id>novoTopico</flow-id>
+    </flow-reference>
+</flow-call>
+<flow-call id="listaMensagem">
+    <flow-reference>
+    <flow-id>listaMensagem</flow-id>
+    </flow-reference>
+</flow-call>
+<flow-call id="callManterMensagem">
+    <flow-reference>
+    <flow-id>manterMensagem</flow-id>
+    </flow-reference>
+    <outbound-parameter>
+    	<name>labelTitulo</name>
+    	<value>#{msg['label.responderMensagem']}</value>
+ 	</outbound-parameter>
+</flow-call>
+<flow-call id="callEditarMensagem">
+    <flow-reference>
+    <flow-id>manterMensagem</flow-id>
+    </flow-reference>
+    <outbound-parameter>
+    	<name>labelTitulo</name>
+    	<value>#{msg['label.editarMensagem']}</value>
+ 	</outbound-parameter>
+</flow-call>
+<method-call id="salvarTopico" >
+<method>#{forumController.salvarTopico}</method>
+<default-outcome>sucesso</default-outcome>
+</method-call>
+
+<flow-return id="salvarTopicoRetorno">
+    <from-outcome>#{flow2Bean.returnValue}</from-outcome>
+</flow-return>
+</flow-definition>
+</faces-config>

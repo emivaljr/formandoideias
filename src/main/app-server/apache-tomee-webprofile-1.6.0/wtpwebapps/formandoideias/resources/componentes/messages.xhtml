@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ff="http://www.formandoideias.com.br/facelets">
+
+<cc:interface>
+    <cc:attribute name="id" required="true" type="java.lang.String" shortDescription="Identificador da instância do componente"/>
+    <cc:attribute name="globalOnly" type="java.lang.Boolean" default="true" shortDescription="Indica que apenas mensagens de erros globais serão apresentadas. Valor padrão: true"/>
+</cc:interface>
+
+<cc:implementation>
+    
+    <h:messages id="#{cc.attrs.id}" globalOnly="#{cc.attrs.globalOnly}" 
+        errorClass="alert alert-danger" infoClass="alert alert-info" 
+        warnClass="alert alert-warning" fatalClass="alert alert-danger"
+        styleClass="list-unstyled"/>
+    
+</cc:implementation>
+
+</html>

@@ -1,0 +1,10 @@
+127.0.0.1 - - [09/Feb/2014:23:28:02 -0200] "GET / HTTP/1.1" 200 11638
+127.0.0.1 - - [09/Feb/2014:23:31:06 -0200] "GET / HTTP/1.1" 200 11638
+127.0.0.1 - - [09/Feb/2014:23:31:15 -0200] "GET /formandoideias/home.jsf HTTP/1.1" 200 4109
+127.0.0.1 - - [09/Feb/2014:23:31:15 -0200] "GET /formandoideias/resources/gfx/weld.png HTTP/1.1" 304 -
+127.0.0.1 - - [09/Feb/2014:23:31:15 -0200] "GET /formandoideias/resources/gfx/banner.png HTTP/1.1" 304 -
+127.0.0.1 - - [09/Feb/2014:23:31:15 -0200] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [09/Feb/2014:23:32:06 -0200] "GET / HTTP/1.1" 200 11638
+127.0.0.1 - - [09/Feb/2014:23:32:39 -0200] "GET /formandoideias/home.jsf HTTP/1.1" 500 13859
+127.0.0.1 - - [09/Feb/2014:23:33:08 -0200] "GET /formandoideias/home.jsf HTTP/1.1" 200 4310
+127.0.0.1 - - [09/Feb/2014:23:35:33 -0200] "GET /formandoideias/home.jsf HTTP/1.1" 200 4471

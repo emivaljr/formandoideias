@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:jsf="http://xmlns.jcp.org/jsf"
+   template="/template/default.xhtml">
+   <ui:define name="content">
+<h:form>            
+            <div class="col-md-10">
+            <ol class="breadcrumb">
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.curso.descricao}</a></li>                    
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.nome}</a></li>                    
+                    <li class="active">#{msg['label.forum']}</li>
+           </ol>   
+                <div class="block block-transparent">
+                    <div class="header">
+                        <h2>#{msg['label.listaTopicos']}
+                        </h2>
+                        <div class="side pull-right">
+                        <button jsf:action="novoTopico" class="btn btn-default btn-clean">#{msg['label.novoTopico']}</button>
+                        </div>
+                    </div>                    
+                    <div class="content list list-default">
+                        <ui:repeat var="topico" value="#{forumController.listaTopicos}">
+                        <div class="list-item">
+                            <div class="list-title">
+                            <h:commandLink action="listaMensagem" actionListener="#{forumController.carregaMensagens(topico)}" value="#{topico.assunto}" />
+                            </div>
+                            <div class="list-text">
+                                <p>
+                                <h:outputText value="#{msg['label.criadoPor']}" />
+                                <strong><h:outputText value="#{topico.autor.primeiroNome}" />
+                                <h:outputText value=" " />
+                                <h:outputText value="#{topico.autor.sobrenome}" /></strong>
+                                <h:outputText value=" " />
+                                <h:outputText value="#{msg['label.em']}" />
+                                <h:outputText value=" " />
+                                <strong><h:outputText value="#{topico.dataCriacao}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                </h:outputText></strong>
+                                </p>
+                                                                
+                            </div>                         
+                        </div>
+                        </ui:repeat>
+                    </div>                
+                </div>
+            </div>
+</h:form>
+   </ui:define>
+</ui:composition>

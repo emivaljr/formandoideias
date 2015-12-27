@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+  <!-- see http://tomee.apache.org/containers-and-resources.html -->
+
+  <!-- activate next line to be able to deploy applications in apps -->
+  <!-- <Deployments dir="apps" /> -->
+<Resource id="PostGresJTA" type="DataSource">
+    JdbcDriver          org.postgresql.Driver
+    JdbcUrl             jdbc:postgresql://localhost:5432/postgres
+    UserName            postgres
+    Password            123
+    JtaManaged          true
+    DefaultAutoCommit   false
+</Resource>
+<Resource id="PostGresNJTA" type="DataSource">
+    JdbcDriver          org.postgresql.Driver
+    JdbcUrl             jdbc:postgresql://localhost:5432/postgres
+    UserName            postgres
+    Password            123
+    JtaManaged          true
+    DefaultAutoCommit   false
+</Resource>
+<Resource id="MySQLDS" type="DataSource">
+    JdbcDriver          com.mysql.jdbc.Driver
+    JdbcUrl             jdbc:mysql://localhost:3306/formandoideias
+    UserName            root
+    Password            123456
+    JtaManaged          true
+    DefaultAutoCommit   false
+</Resource>
+<Resource id="MySQLDSUN" type="DataSource">
+    JdbcDriver          com.mysql.jdbc.Driver
+    JdbcUrl             jdbc:mysql://localhost:3306/formandoideias
+    UserName            root
+    Password            123456
+    JtaManaged          false
+    DefaultAutoCommit   false
+</Resource>
+</tomee>
+
+

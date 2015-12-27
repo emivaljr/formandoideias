@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:jsf="http://xmlns.jcp.org/jsf"
+   template="/template/default.xhtml">
+   <ui:define name="content">
+<h:form>            
+            <div class="col-md-10">
+            <ol class="breadcrumb">
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.curso.descricao}</a></li>                    
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.nome}</a></li>                    
+                    <li class="active">#{msg['label.forum']}</li>
+           </ol>   
+				<div class="content list list-default">
+                        <div class="list-item">
+
+                            <div class="list-title">#{forumController.topicoSelecionado.assunto}</div>
+                            <div class="list-info">
+                            		<center>
+                                    <img src="#{request.contextPath}/img/example/user/dmitry_s.jpg" class="img-circle img-thumbnail"/><br/>
+                                    #{forumController.topicoSelecionado.autor.primeiroNome}
+                                    </center> 
+                         	</div>
+                            <div class="list-text" style="float: none;">
+                                #{forumController.topicoSelecionado.descricao}                                
+                            </div>
+                            <div class="list-text side pull-right btn-group">
+                            	<button jsf:action="novoTopico" class="btn btn-default btn-clean">#{msg['label.editar']}</button>
+                            	<button jsf:action="novoTopico" class="btn btn-default btn-clean">#{msg['label.excluir']}</button>
+                        		<button jsf:action="callManterMensagem" jsf:actionListener="#{forumController.responderMensagem(mensagem)}" class="btn btn-default btn-clean">#{msg['label.responder']}</button>
+                            </div>
+                        </div>
+                        <ui:repeat var="mensagem" value="#{forumController.listaMensagem}">
+                        <div class="list-item">
+                            <div class="list-title"></div>
+                            <div class="list-info">
+                            		<center>
+                                    <img src="#{request.contextPath}/img/example/user/dmitry_s.jpg" class="img-circle img-thumbnail"/><br/>
+                                    #{mensagem.autor.primeiroNome}
+                                    </center> 
+                         	</div>
+                            <div class="list-text" style="float: none;">
+                                <p>#{mensagem.descricao}</p>  
+                                                            
+                            </div>
+                            <div class="list-text side pull-right btn-group">
+                            	<button jsf:action="callEditarMensagem" jsf:actionListener="#{forumController.carregaMensagemSelecionada(mensagem)}" class="btn btn-default btn-clean">#{msg['label.editar']}</button>
+                            	<a href="#modal_default_6" data-toggle="modal" class="btn btn-default btn-clean">#{msg['label.excluir']}</a>
+                        		<button jsf:action="callManterMensagem" jsf:actionListener="#{forumController.responderMensagem(mensagem)}" class="btn btn-default btn-clean">#{msg['label.responder']}</button>
+                            </div>
+                        </div>
+                        <div class="modal" id="modal_default_6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        					<div class="modal-dialog">
+            				<div class="modal-content">                
+               				 <div class="modal-header">
+                    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    			<h4 class="modal-title">#{msg['msg.confirmaExclusao']}</h4>
+               				 </div>                
+                			<div class="modal-footer">
+                    			<button type="button" jsf:actionListener="#{forumController.excluirMensagem(mensagem)}" class="btn btn-success btn-clean" data-dismiss="modal">Yes</button>
+                    			<button type="button" class="btn btn-danger btn-clean" data-dismiss="modal">No</button>
+                			</div>
+            				</div>
+                    		</div>
+            			</div>
+                        </ui:repeat>
+                                              
+                        
+           </div>
+           </div>
+</h:form>
+   </ui:define>
+</ui:composition>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://java.sun.com/jsf/passthrough"
+   xmlns:message="http://java.sun.com/jsf/composite/message"
+   template="/template/default.xhtml">
+<ui:define name="body">
+<body class="bg-img-num1"> 
+    
+    <div class="container">  
+    <script>
+    $(function(){
+        $("#form").attr("autocomplete", "off");
+    });
+	</script>      
+<h:form id="form">
+        <div class="registration-block">
+            <div class="block block-transparent">
+                <div class="head tac">                    
+                    <a href="index.html"><img src="#{request.contextPath}/img/logob.png"/></a>
+                    
+                </div>
+                <div class="content">                    
+                    <message:message/>
+                </div>
+                <div class="content controls npt">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-user"></span>
+                                </div>
+                                <h:inputText styleClass="form-control" label="#{msg['label.primeiroNome']}" required="true" p:placeholder="#{msg['label.primeiroNome']}"  value="#{registroUsuarioController.usuario.primeiroNome}" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-user"></span>
+                                </div>
+                                <h:inputText styleClass="form-control" label="#{msg['label.sobrenome']}" p:placeholder="#{msg['label.sobrenome']}" required="true" value="#{registroUsuarioController.usuario.sobrenome}" />
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-key"></span>
+                                </div>
+                                <h:inputText styleClass="form-control" label="#{msg['label.login']}" validator="#{registroUsuarioController.validateLoginExistente}" p:placeholder="#{msg['label.login']}" required="true" value="#{registroUsuarioController.login.login}" />                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-envelope"></span>
+                                </div>
+                                <h:inputText styleClass="form-control"  label="#{msg['label.email']}" p:placeholder="#{msg['label.email']}" required="true" value="#{registroUsuarioController.usuario.email}" />
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-lock"></span>
+                                </div>
+                                <h:inputSecret  styleClass="form-control"  label="#{msg['label.senha']}" p:placeholder="#{msg['label.senha']}" required="true" value="#{registroUsuarioController.login.senha}" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-unlock-alt"></span>
+                                </div>
+                                <h:inputSecret  styleClass="form-control"  label="#{msg['label.redigiteasenha']}" p:placeholder="#{msg['label.redigiteasenha']}" required="true" value="#{registroUsuarioController.login.senha}" />
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                <label><h:selectBooleanCheckbox value="#{registroUsuarioController.aceitarTermos}" /> #{msg['label.concordoComTermos']}</label>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="form-row">
+                        <div class="col-md-12">
+                        	<h:commandLink action="salvar" value="#{msg['label.logar']}" styleClass="btn btn-default btn-block btn-clean" />
+                        </div>
+                    </div>                    
+                    <div class="form-row">
+                        <div class="col-md-12 tac"><strong>#{msg['label.ouuse']}</strong></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-info btn-block"><span class="icon-facebook"></span> &#180; Facebook</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-primary btn-block"><span class="icon-twitter"></span> &#180; Tweeter</a>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+</h:form>
+    </div>
+</body>
+</ui:define>
+</ui:composition>

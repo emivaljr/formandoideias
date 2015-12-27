@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ff="http://www.formandoideias.com.br/facelets">
+
+<cc:interface>
+    <cc:attribute name="id" required="true" type="java.lang.String" shortDescription="Identificador da instância do componente"/>
+    <cc:attribute name="elementId" type="java.lang.String" default="ajaxloader" shortDescription="Identificador do elemento que deve ser apresentado no momento de uma requisição ajax"/>
+    <cc:attribute name="modalId" type="java.lang.String" shortDescription="Identificador da modal a ser apresentada no momento da requisição ajax"/>
+    <cc:attribute name="modalTitle" type="java.lang.String" shortDescription="Título da modal a ser apresentada no momento da requisição ajax"/>
+    <cc:attribute name="modalMessage" type="java.lang.String" shortDescription="Mensagem a ser apresentada no momento da requisição ajax"/>
+</cc:interface>
+ 
+<cc:implementation>
+
+    <script>
+    jsf.ajax.addOnEvent(function(data) {
+        var ajaxstatus = data.status; // Can be "begin", "complete" and "success"
+        var ajaxloader = document.getElementById("#{cc.attrs.elementId}");
+
+        switch (ajaxstatus) {
+            case "begin": // This is called right before ajax request is been sent.
+                
+                <ui:fragment rendered="#{!empty cc.attrs.modalId}">
+                    $('##{cc.attrs.modalId}').modal('show');
+                </ui:fragment>
+                <ui:fragment rendered="#{empty cc.attrs.modalId and !empty cc.attrs.elementId}">
+                    ajaxloader.style.display = 'block';
+                </ui:fragment>
+                
+                break;
+
+            case "complete": // This is called right after ajax response is received.
+
+                <ui:fragment rendered="#{!empty cc.attrs.modalId}">
+                    $('##{cc.attrs.modalId}').modal('hide');
+                </ui:fragment>
+                <ui:fragment rendered="#{empty cc.attrs.modalId and !empty cc.attrs.elementId}">
+                    ajaxloader.style.display = 'none';
+                </ui:fragment>
+            
+                break;
+
+            case "success": // This is called when ajax response is successfully processed.
+                // NOOP.
+                break;
+        }
+    });
+    </script>
+
+    <ui:fragment rendered="#{!empty cc.attrs.modalId}">
+        <div id="#{cc.attrs.modalId}" class="modal fade" tabindex="-1" role="dialog"
+            data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">#{cc.attrs.modalTitle}</h4>
+                    </div>
+                    <div class="modal-body">
+                        #{cc.attrs.modalMessage}
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </ui:fragment>
+</cc:implementation>
+
+</html>
+

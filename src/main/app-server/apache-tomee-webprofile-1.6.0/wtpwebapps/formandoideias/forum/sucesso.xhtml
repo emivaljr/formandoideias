@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+   xmlns:prime="http://primefaces.org/ui"
+   xmlns:jsf="http://xmlns.jcp.org/jsf"
+   xmlns:message="http://java.sun.com/jsf/composite/message"
+   template="/template/default.xhtml">
+<ui:define name="content">
+<h:form id="form">    
+  <div class="container">        
+			<div class="col-md-10">
+			 <ol class="breadcrumb">
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.curso.descricao}</a></li>                    
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.nome}</a></li>                    
+                    <li>#{msg['label.forum']}</li>
+                    <li class="active">#{msg['label.novoTopico']}</li>
+           </ol>
+			<div class="block block-drop-shadow">
+				<div class="header">
+				<h2>Mensagem</h2>
+				</div>
+				<div class="content">
+				Cadastro realizado com sucesso. 
+				</div>
+				<div class="footer tar">
+				<button jsf:action="salvarTopicoRetorno" class="btn btn-default btn-clean">OK</button>
+				</div>
+				</div>	
+			</div>
+				
+			</div>
+		</h:form>
+</ui:define>
+</ui:composition>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/default.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<div class="col-md-10">
+				<ol class="breadcrumb">
+					<li><a href="#">#{sessaoUsuario.turmaSelecionada.curso.descricao}</a></li>
+					<li><a href="#">#{sessaoUsuario.turmaSelecionada.nome}</a></li>
+					<li class="active">#{msg['label.exercicios']}</li>
+				</ol>
+				<div class="block block-transparent">
+					<div class="header">
+						<h2>#{msg['label.exercicios']}</h2> 
+					</div>
+					<div class="content list list-default">
+						<ui:repeat var="questionario"
+							value="#{exercicioAulaController.listaQuestionarios}">
+							<div class="list-item">
+								<div class="list-text"> 
+									<h:commandLink value="#{questionario.nome}" action="obtemQuestionario">
+										<f:setPropertyActionListener target="#{exercicioAulaController.questionarioSelecionado}" value="#{questionario}" />
+									</h:commandLink> 
+								</div>
+							</div>
+						</ui:repeat>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+   xmlns:prime="http://primefaces.org/ui"
+   xmlns:jsf="http://xmlns.jcp.org/jsf"
+   xmlns:message="http://java.sun.com/jsf/composite/message"
+   template="/template/default.xhtml">
+<ui:define name="body">
+<body class="bg-img-num1">
+<h:form id="form">    
+  <div class="container">        
+			<div class="row">
+			<div class="col-md-12">
+				<div class="block block-drop-shadow">
+				<div class="header">
+				<h2>Mensagem</h2>
+				</div>
+				<div class="content">
+				Cadastro realizado com sucesso. 
+				</div>
+				<div class="footer tar">
+				<button jsf:action="registroUsuarioRetorno" class="btn btn-default btn-clean">OK</button>
+				</div>
+				</div>
+				
+			</div>
+				
+			</div>
+			</div>
+		</h:form>
+</body>
+</ui:define>
+</ui:composition>

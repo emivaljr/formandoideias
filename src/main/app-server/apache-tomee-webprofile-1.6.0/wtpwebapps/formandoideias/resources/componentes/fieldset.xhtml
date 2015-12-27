@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+<cc:interface>
+    <cc:attribute name="id" required="true" type="java.lang.String" shortDescription="Identificador da instância do componente"/>
+    <cc:attribute name="legend" type="java.lang.String" shortDescription="Rótulo para o componente"/>
+</cc:interface>
+
+<cc:implementation>
+    
+        <fieldset id="#{cc.attrs.id}">
+            <legend><h:outputText value="#{cc.attrs.legend}"/></legend>
+            <cc:insertChildren/>
+        </fieldset>
+
+</cc:implementation>
+
+</html>

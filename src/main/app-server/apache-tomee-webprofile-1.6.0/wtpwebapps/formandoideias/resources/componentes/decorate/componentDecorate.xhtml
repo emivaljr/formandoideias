@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:ff="http://www.ana.gov.br/facelets">
+
+<ui:composition>
+
+    <c:set var="groupClass" value="#{!renderPrepend and !renderAppend ? '' : 'input-group'}"/>
+    <c:set var="sizeClass" value="col-lg-#{inputSize}"/>
+    <c:set var="haveError" value="#{ff:possuiMensagens(clientId.concat(':input'))}"/>
+
+    <div class="form-group #{haveError ? 'has-error' : ''}">
+
+        <ui:decorate template="labelDecorate.xhtml">
+            <ui:param name="label" value="#{label}"/>
+            <ui:param name="labelFor" value="#{clientId}:input"/>
+            <ui:param name="required" value="#{required}"/>
+            <ui:param name="layout" value="#{layout}"/>
+            <ui:param name="labelSize" value="#{labelSize}"/>
+        </ui:decorate>
+
+        <div class="abc #{groupClass} #{layout eq 'horizontal' ? sizeClass : ''}"> 
+
+            <ui:fragment rendered="#{renderPrepend}">
+                <div class="input-group-addon">
+                    <ui:insert name="prepend"/>
+                </div>
+            </ui:fragment>
+
+            <ui:insert name="input"/>
+
+            <ui:fragment rendered="#{renderAppend}">
+                <div class="#{actionAppend ? 'input-group-btn' : 'input-group-addon'} ">
+                    <ui:insert name="append"/>
+                </div>
+            </ui:fragment>
+
+            <ui:decorate template="messageDecorate.xhtml">
+                <ui:param name="title" value="#{title}"/>
+                <ui:param name="labelFor" value="#{clientId}:input"/>
+                <ui:param name="layout" value="#{layout}"/>
+                <ui:param name="labelSize" value="#{labelSize}"/>
+                <ui:param name="haveError" value="#{haveError}"/>
+            </ui:decorate>
+
+        </div>
+
+        <ui:insert name="init"/>
+
+    </div>
+
+</ui:composition>
+</html>

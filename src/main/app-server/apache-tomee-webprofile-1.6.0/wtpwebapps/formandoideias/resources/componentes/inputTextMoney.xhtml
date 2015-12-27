@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ff="http://www.formandoideias.com.br/facelets">
+
+<cc:interface>
+    <cc:attribute name="id" required="true" type="java.lang.String" shortDescription="Identificador da instância do componente"/>
+    <cc:attribute name="label" type="java.lang.String" shortDescription="Rótulo para o componente"/>
+    <cc:attribute name="required" default="false" type="java.lang.Boolean" shortDescription="Indica a obrigatoriedade do campo"/>
+    <cc:attribute name="title" type="java.lang.String" shortDescription="Ajuda para o componente"/>
+    <cc:attribute name="value" required="true" shortDescription="Valor a ser atribuído ao componente"/>
+    <cc:attribute name="accesskey" type="java.lang.String"  shortDescription="Tecla de atalho para o componente"/>
+    <cc:attribute name="dir" type="java.lang.String"  default="rtl" shortDescription="Controla a direção do texto. Valores: ltr (left to right), rtl (right to left)"/>
+    <cc:attribute name="autocomplete" type="java.lang.Boolean" default="false" shortDescription="Permite a função autocomplete do browser para o componente. Valores: true, false"/>                
+    <cc:attribute name="immediate" type="java.lang.Boolean" default="false" shortDescription="Indica que o valor desse campo deve ser convertido e validado imediatamente, ao invés do submit. Valores: true, false"/>
+    <cc:attribute name="maxlength" type="java.lang.Integer" default="30" shortDescription="Tamanho para o texto do componente"/>
+    <cc:attribute name="disabled" type="java.lang.Boolean" default="false" shortDescription="Não permite que o valor do campo seja alterado. Valor é enviado no submit. Valores: true, false"/>
+    <cc:attribute name="readonly" type="java.lang.Boolean" default="false" shortDescription="Não permite que o valor do campo seja alterado. Valor não é enviado no submit. Valores: true, false"/>
+    <cc:attribute name="style" type="java.lang.String" shortDescription="Regras CSS adicionais para o componente"/>
+    <cc:attribute name="styleClass" type="java.lang.String" shortDescription="Classes CSS adicionais para o componente"/>
+    <cc:attribute name="layout" type="java.lang.String" default="default" shortDescription="Layout do form. Valores: default, inline, horizontal. Valor padrão: default."/>
+    <cc:attribute name="labelSize" type="java.lang.Integer" default="2" shortDescription="Tamanho do label para forms com layout horizontal. Valores: 1 a 12"/>
+    <cc:attribute name="inputSize" type="java.lang.Integer" default="10" shortDescription="Tamanho do componente para forms com layout horizontal. Valores: 1 a 12"/>
+    
+    <cc:attribute name="simbolo" type="java.lang.String" default="$" shortDescription="Simbolo usado para a moeda. Padrão: $"/>
+    <cc:attribute name="sepMilhar" type="java.lang.String" default="." shortDescription="Separador para as casas de milhares. Padrão: ."/>
+    <cc:attribute name="sepDecimal" type="java.lang.String" default="," shortDescription="Separador para a casa decimal. Padrão: ,"/>
+    <cc:attribute name="casasDecimais" type="java.lang.Integer" default="2" shortDescription="Número de casas decimais. Padrão: 2"/>
+    <cc:attribute name="maximo" type="java.lang.String" default="999999999.99" shortDescription="Valor máximo aceito pelo componente. Padrão: 999999999.99"/>    
+
+    <cc:attribute name="onblur" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento blur"/>
+    <cc:attribute name="onchange" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento change"/>
+    <cc:attribute name="onclick" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento click"/>
+    <cc:attribute name="ondblclick" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento dblclick"/>
+    <cc:attribute name="onfocus" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento focus"/>
+    <cc:attribute name="onkeydown" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento keydown"/>
+    <cc:attribute name="onkeyup" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento keyup"/>
+    <cc:attribute name="onkeypress" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento keypress"/>
+    <cc:attribute name="onmousedown" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento mousedown"/>
+    <cc:attribute name="onmousemove" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento mousemove"/>
+    <cc:attribute name="onmouseout" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento mouseout"/>
+    <cc:attribute name="onmouseover" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento mouseover"/>
+    <cc:attribute name="onmouseup" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento mouseup"/>
+    <cc:attribute name="onselect" type="java.lang.String" shortDescription="funcão javascript a ser executada ao ocorrer o evento select"/>
+    
+    <cc:clientBehavior name="blur" event="blur" targets="input"/>
+    <cc:clientBehavior name="change" event="change" targets="input"/>
+    <cc:clientBehavior name="click" event="click" targets="input"/>
+    <cc:clientBehavior name="dblclick" event="dblclick" targets="input"/>
+    <cc:clientBehavior name="focus" event="focus" targets="input"/>
+    <cc:clientBehavior name="keydown" event="keydown" targets="input"/>
+    <cc:clientBehavior name="keyup" event="keyup" targets="input"/>
+    <cc:clientBehavior name="keypress" event="keypress" targets="input"/>
+    <cc:clientBehavior name="mousedown" event="mousedown" targets="input"/>
+    <cc:clientBehavior name="mousemove" event="mousemove" targets="input"/>
+    <cc:clientBehavior name="mouseout" event="mouseout" targets="input"/>
+    <cc:clientBehavior name="mouseover" event="mouseover" targets="input"/>
+    <cc:clientBehavior name="mouseup" event="mouseup" targets="input"/>
+    <cc:clientBehavior name="select" event="select" targets="input"/>
+    <cc:editableValueHolder name="input" targets="input"/>
+    
+</cc:interface>
+ 
+<cc:implementation>
+
+        <h:outputScript library="js" name="auto-numeric-1.9.7.js" target="head"/>
+        <ui:decorate template="decorate/componentDecorate.xhtml">
+            <ui:param name="clientId" value="#{cc.clientId}"/>
+            <ui:param name="label" value="#{cc.attrs.label}"/>
+            <ui:param name="labelFor" value="#{cc.clientId}:input"/>
+            <ui:param name="required" value="#{cc.attrs.required}"/>
+            <ui:param name="title" value="#{cc.attrs.title}"/>
+            <ui:param name="layout" value="#{cc.attrs.layout}" />
+            <ui:param name="labelSize" value="#{cc.attrs.labelSize}" />
+            <ui:param name="inputSize" value="#{cc.attrs.inputSize}" />
+            <ui:param name="renderPrepend" value="true" />
+            <ui:param name="renderAppend" value="false" />
+            <ui:param name="actionAppend" value="false" />
+            
+            <ui:define name="input">
+    
+                <h:inputText 
+                    id="input" value="#{cc.attrs.value}" 
+                    required="#{cc.attrs.required}" 
+                    dir="#{cc.attrs.dir}"
+                    accesskey="#{cc.attrs.accesskey}"
+                    autocomplete="#{cc.attrs.autocomplete}"
+                    immediate="#{cc.attrs.immediate}"
+                    maxlength="#{cc.attrs.maxlength}"
+                    disabled="#{cc.attrs.disabled}"
+                    readonly="#{cc.attrs.readonly}"
+                    styleClass="form-control #{cc.attrs.styleClass} "
+                    style="#{cc.attrs.style}"
+                    title="#{cc.attrs.title}"/>
+               
+            </ui:define>
+            
+            <ui:define name="init">    
+                <script>
+                $(function(){
+                    $("input[id*='#{cc.attrs.id}']").autoNumeric('init', { 
+                        aSep: '#{cc.attrs.sepMilhar}', 
+                        dGroup: '#{cc.attrs.casasDecimais}', 
+                        aDec: '#{cc.attrs.sepDecimal}', 
+                        vMax: '#{cc.attrs.maximo}' });   
+                })
+                </script>
+            </ui:define> 
+                   
+            <ui:define name="prepend">
+                #{cc.attrs.simbolo}
+            </ui:define>
+    
+        </ui:decorate>
+    
+</cc:implementation>
+
+</html>
+

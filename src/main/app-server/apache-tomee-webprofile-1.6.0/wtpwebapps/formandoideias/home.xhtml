@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/template/default.xhtml">
+   <ui:define name="content">
+<h:form>            
+            <div class="col-md-10">
+                
+                <div class="block">
+                    <div class="header">
+                        <h2>Masked inputs</h2>
+                        <div class="side pull-right">
+                        	<h:commandButton action="registroUsuario" value="Registrar" />
+                            <button class="btn btn-default btn-clean" onClick="clear_form('#makedinputs');" type="button">Clear form</button>
+                        </div>                                        
+                    </div>
+                    <div class="content controls">   
+                        
+                            <div class="col-md-6">
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">Date:</div>
+                                    <div class="col-md-7">
+                                    	<h:inputText value="" styleClass="mask_date" />
+                                        <span class="help-inline">Example: 2012-12-21</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">Phone:</div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="mask_phone" value=""/>
+                                        <span class="help-inline">Example: 98 (765) 432-10-98</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">Phone + Ext:</div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="mask_phone_ext" value=""/>
+                                        <span class="help-inline">Example: 98 (765) 432-10-98 x9999</span>
+                                    </div>
+                                </div>                    
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">Credit:</div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="mask_credit" value=""/>
+                                        <span class="help-inline">Example: 9876-5432-1098-7654</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">TIN:</div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="mask_tin" value=""/>
+                                        <span class="help-inline">Example: 98-7654321</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">SSN:</div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="mask_ssn" value=""/>
+                                        <span class="help-inline">Example: 987-65-4321</span>
+                                    </div>
+                                </div>                    
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">Product:</div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="mask_product" value=""/>
+                                        <span class="help-inline">Example: A1-234-B567</span>
+                                    </div>
+                                </div>                       
+                                <div class="form-row">
+                                    <div class="col-md-3 tar">Percent:</div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="mask_percent" value=""/>
+                                        <span class="help-inline">Example: 50%</span>
+                                    </div>
+                                </div>                                    
+                            </div>
+                    </div>                                    
+                </div>                
+                
+            </div>
+</h:form>
+   </ui:define>
+</ui:composition>

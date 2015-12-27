@@ -1,0 +1,22 @@
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+      http://xmlns.jcp.org/xml/ns/javaee
+      http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+<flow-definition id="registroUsuario">
+<flow-return id="registroUsuarioRetorno">
+    <from-outcome>#{flow2Bean.returnValue}</from-outcome>
+</flow-return>
+<flow-call id="sucesso">
+    <flow-reference>
+    <flow-id>sucesso</flow-id>
+    </flow-reference>
+</flow-call>
+<method-call id="salvar" >
+<method>#{registroUsuarioController.salvar}</method>
+<default-outcome>sucesso</default-outcome>
+</method-call>
+
+</flow-definition>
+</faces-config>

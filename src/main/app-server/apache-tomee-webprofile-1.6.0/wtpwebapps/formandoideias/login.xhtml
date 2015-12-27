@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+   xmlns:prime="http://primefaces.org/ui"
+   xmlns:message="http://java.sun.com/jsf/composite/message"
+   template="/template/default.xhtml">
+<ui:define name="body">
+<body class="bg-img-num1">
+<h:form> 
+    <div class="container">        
+
+        <div class="login-block">
+            <div class="block block-transparent">
+                <div class="head">
+                    <div class="user">
+                        <div class="info user-change">                                                                                
+                            <img src="#{request.contextPath}/img/example/user/dmitry_b.jpg" class="img-circle img-thumbnail"/>
+                            <div class="user-change-button">
+                                <span class="icon-off"></span>
+                            </div>
+                        </div>                            
+                    </div>
+                </div>
+                <div class="content controls npt">
+                    <div class="form-row user-change-row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-user"></span>
+                                </div>
+                                <h:inputText styleClass="form-control" p:placeholder="#{msg['label.login']}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="icon-key"></span>
+                                </div>
+                                <h:inputSecret styleClass="form-control" p:placeholder="#{msg['label.senha']}" />
+                            </div>
+                        </div>
+                    </div>                        
+                    <div class="form-row">
+                        <div class="col-md-6">
+                        <h:commandLink action="registroUsuario" styleClass="btn btn-default btn-block btn-clean" value="#{msg['label.registrar']}" />                               
+                        </div>
+                        <div class="col-md-6">
+                        <h:commandLink action="registroUsuario" styleClass="btn btn-default btn-block btn-clean" value="#{msg['label.entrar']}" />
+                        </div>
+                    </div>
+                    <div class="form-row">                            
+                        <div class="col-md-12">
+                        	<h:commandLink styleClass="btn btn-link btn-block" value="#{msg['label.esqueceuSenha']}" />
+                        </div>
+                    </div>                         
+                    <div class="form-row">
+                        <div class="col-md-12 tac"><strong>OR USE</strong></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                        <h:outputLink value="#{loginController.conectarComFacebook()}" styleClass="btn btn-info btn-block">
+								<span class="icon-facebook"></span> Facebook
+						</h:outputLink>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-primary btn-block"><span class="icon-twitter"></span> Tweeter</a>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</h:form>
+</body>
+</ui:define>
+</ui:composition>

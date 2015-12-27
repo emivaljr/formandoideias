@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ff="http://www.formandoideias.com.br/facelets"
+    xmlns:comp="http://java.sun.com/jsf/composite/componentes">
+
+<cc:interface>
+    <cc:attribute name="id" required="true" type="java.lang.String" shortDescription="Identificador da instância do componente."/>
+    <cc:attribute name="layout" type="java.lang.String" default="default" shortDescription="Layout do form. Valores: default, inline, horizontal. Valor padrão: default."/>
+    <cc:attribute name="prependId" type="java.lang.Boolean" default="true" shortDescription="Indica se o id do form será prefixado no id dos seus componentes. Valores: true, false. Valor padrão: true."/>
+    <cc:attribute name="styleClass" type="java.lang.String" shortDescription="Classes CSS adicionais para o componente"/>
+    <cc:attribute name="showMessages" type="java.lang.Boolean" default="true" shortDescription="Indica a exibição da seção de mensagens de erros. Valores: true, false. Valor padrão: true."/>
+    <cc:attribute name="globalOnly" type="java.lang.Boolean" default="true" shortDescription="Indica a exibição apenas de mensagens de erros globais. Valores: true, false. Valor padrão: true."/>
+</cc:interface>
+
+<cc:implementation>
+    
+    <c:set var="formStyle" value="#{cc.attrs.layout eq 'inline' ? 'form-inline' : (cc.attrs.layout eq 'horizontal' ? 'form-horizontal' : '')}"/>
+    <h:form id="form" 
+            prependId="#{cc.attrs.prependId}"
+            styleClass="#{formStyle} #{cc.attrs.styleClass}"> 
+    
+        <ui:fragment rendered="#{cc.attrs.showMessages}">
+            <comp:messages id="messages" globalOnly="#{cc.attrs.globalOnly}"/>
+        </ui:fragment>
+        
+        <cc:insertChildren/>
+        
+    </h:form>
+    
+</cc:implementation>
+
+</html>

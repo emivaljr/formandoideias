@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:ff="http://www.ana.gov.br/facelets">
+      
+<ui:composition>
+    <c:set var="sizeClass" value="col-lg-#{labelSize}"/>
+
+    <ui:fragment rendered="#{!empty label}">
+        <label for="#{labelFor}" class="control-label #{layout eq 'inline' ? 'sr-only' : ''} #{layout eq 'horizontal' ? sizeClass : ''}">
+            <h:outputText value="#{label}:" />
+            <h:outputText value=" *" rendered="#{required}" />
+        </label>
+    </ui:fragment>
+</ui:composition>
+</html>

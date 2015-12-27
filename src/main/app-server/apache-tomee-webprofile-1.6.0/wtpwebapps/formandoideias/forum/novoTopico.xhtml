@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+ 
+   xmlns:jsf="http://xmlns.jcp.org/jsf"
+   template="/template/default.xhtml">
+   <ui:define name="content">
+<h:form>            
+            <div class="col-md-10">
+            <ol class="breadcrumb">
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.curso.descricao}</a></li>                    
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.nome}</a></li>                    
+                    <li>#{msg['label.forum']}</li>
+                    <li class="active">#{msg['label.novoTopico']}</li>
+           </ol>
+           <div class="block">
+                    <div class="header">
+                        <h2>#{msg['label.novoTopico']}</h2>
+                    </div>
+                    <div class="content controls">
+                        <div class="form-row">
+                            <div class="col-md-3"><h:outputLabel value="#{msg['label.assunto']}:" for="assunto" /> </div>
+                            <div class="col-md-9">
+                            	<h:inputText id="assunto" styleClass="form-control" value="#{forumController.topicoSelecionado.assunto}" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-3"><h:outputLabel value="#{msg['label.descricao']}:" for="descricao" /> </div>
+                            <div class="col-md-9">
+                            	<h:inputTextarea id="descricao" styleClass="form-control" value="#{forumController.topicoSelecionado.descricao}" />
+                            </div>
+                        </div>                           
+                    </div>
+                   <div class="footer tar">
+                        <button jsf:action="salvarTopico" class="btn btn-default btn-clean">#{msg['label.salvar']}</button>
+                </div>
+           </div>
+          </div>
+</h:form>
+   </ui:define>
+</ui:composition>

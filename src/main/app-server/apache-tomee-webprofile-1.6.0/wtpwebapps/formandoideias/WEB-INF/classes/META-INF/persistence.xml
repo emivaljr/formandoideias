@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+   xmlns="http://java.sun.com/xml/ns/persistence" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+      http://java.sun.com/xml/ns/persistence
+      http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+   <persistence-unit name="widgets">
+      <!-- You can force a non-default JPA provider using one of these declarations -->
+     
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      
+      <!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+      -->
+      
+     
+      <!-- Use this data source name for JBoss AS -->
+      <!-- Use this data source name for Glassfish -->
+      <!-- -->
+      <jta-data-source>PostGresJTA</jta-data-source>
+      <non-jta-data-source>PostGresNJTA</non-jta-data-source>
+      <!--
+      <class>formandoideias.formandoideias.Widget</class>
+      
+      <properties>
+          Properties for Hibernate (default provider for JBoss AS) 
+         <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+         <property name="hibernate.show_sql" value="true"/>
+         <property name="hibernate.transaction.flush_before_completion" value="true"/>
+         <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider"/>
+
+         Properties for EclipseLink (default provider for GlassFish) 
+         <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+         <property name="eclipselink.logging.level" value="FINE"/>
+
+      </properties> 
+      --> 
+     <properties>
+     <!--
+      <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+      <property name="hibernate.connection.password" value="postgres"/>
+      <property name = "hibernate.connection.username" value="123" />
+      <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+       <property name="hibernate.transaction.jta.platform" value="org.apache.openejb.hibernate.OpenEJBJtaPlatform"/>-->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <property name = "hibernate.show_sql" value = "true" />
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.transaction.jta.platform" value="org.apache.openejb.hibernate.OpenEJBJtaPlatform"/>
+      <property name="hibernate.cache.use_second_level_cache" value="true"/>
+    </properties>
+   
+    <!--  
+    <properties>
+     <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/postgres"/>
+      <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
+      <property name="openjpa.ConnectionUserName" value="postgres"/>
+      <property name="openjpa.ConnectionPassword" value="123"/> 
+      <property name="openjpa.jdbc.DBDictionary" value="mysql" />
+      <property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO"/>
+       <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(SchemaAction=add,ForeignKeys=true)" />
+    </properties>-->
+   </persistence-unit>
+</persistence>

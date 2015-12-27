@@ -1,0 +1,20 @@
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+      http://xmlns.jcp.org/xml/ns/javaee
+      http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+<flow-definition id="manterMensagem">
+    <inbound-parameter>
+            <name>labelTitulo</name>
+            <value>#{flowScope.labelTitulo}</value>
+     </inbound-parameter>
+	<method-call id="salvarMensagem" >
+		<method>#{forumController.salvarMensagem}</method>
+		<default-outcome>sucesso</default-outcome>
+	</method-call>
+	<flow-return id="salvarMensagemRetorno">
+    	<from-outcome>#{flow2Bean.returnValue}</from-outcome>
+	</flow-return>
+</flow-definition>
+</faces-config>

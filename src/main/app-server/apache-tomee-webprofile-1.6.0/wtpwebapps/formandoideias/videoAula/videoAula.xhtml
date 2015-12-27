@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:componentes="http://java.sun.com/jsf/composite/componentes"
+   xmlns:jsf="http://xmlns.jcp.org/jsf"
+   template="/template/default.xhtml">
+   <ui:define name="content">
+		<h:form>            
+			<div class="col-md-10">
+			 <ol class="breadcrumb">
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.curso.descricao}</a></li>                    
+                    <li><a href="#">#{sessaoUsuario.turmaSelecionada.nome}</a></li>                    
+                    <li class="active">#{msg['label.videos']}</li>
+           </ol>
+			<ui:repeat var="video"
+							value="#{videoController.listaVideos}">   
+		   	<div class="block block-drop-shadow">
+                    <div class="header">
+                        <h2><h:outputText value="#{video.nome}"/></h2>
+                        <div class="pull-right">
+                            <ul class="buttons">
+                                <li>
+                                
+                                <a href="#modal_default_1" jsf:actionListener="#{videoController.setVideoSelecionado(video)}" data-toggle="modal" >
+                                <span class="icon-pencil"></span>
+                                <f:ajax event="click" execute="@this"/>
+                                </a></li>
+                            </ul>
+                        </div>                        
+                    </div>
+                    <div class="content">                        
+                          <video controls="controls">
+             				<source src="#{video.caminhoVideo}"/>
+         				  </video>                                                  
+                    </div>
+          </div>
+		   </ui:repeat>	
+			</div>
+	<div class="modal in" id="modal_default_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">#{msg['label.videos']}</h4>
+                </div>
+                <div class="modal-body clearfix">
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie tristique odio vitae vulputate. Suspendisse quis ligula hendrerit, laoreet erat gravida, posuere massa. Curabitur magna magna, lacinia et mollis vel, aliquet a lacus. Quisque eget bibendum nulla. Phasellus vitae eros quis magna porta ultrices a in neque. Vestibulum quis nisi consequat, elementum lorem a, viverra metus. Cras feugiat tincidunt interdum. Vivamus accumsan gravida leo eget pulvinar. Aenean imperdiet bibendum ante, in egestas lectus auctor eu. Sed feugiat sem non rutrum vestibulum. Mauris condimentum, purus vitae porttitor dictum, tellus orci consequat dui, quis lobortis dui enim id justo. Nulla facilisi. Aenean sit amet bibendum ligula. Integer vel consequat nibh. Nulla in nisl elementum nulla mattis dictum et eu risus.</p>
+                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque varius imperdiet turpis, nec condimentum erat dignissim quis. Duis ac metus facilisis, dictum arcu a, pellentesque nibh. Duis vestibulum et arcu ut fermentum. Quisque eget massa purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris magna massa, malesuada in euismod a, molestie in libero. Nullam sollicitudin erat non dapibus blandit.</p>
+					
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-clean" data-dismiss="modal">Close</button>              
+                </div>
+            </div>
+        </div>
+    </div>
+		</h:form>
+   </ui:define>
+</ui:composition>
